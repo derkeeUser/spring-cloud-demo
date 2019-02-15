@@ -46,6 +46,12 @@ public class UserDto implements Serializable {
 
     }
 
+    public UserDto(Long id, String nickname, String avatar) {
+        this.id = id;
+        this.nickname = nickname;
+        this.avatar = avatar;
+    }
+
     public UserDto(User user) {
         this.id = user.getId();
         this.nickname = user.getNickname();

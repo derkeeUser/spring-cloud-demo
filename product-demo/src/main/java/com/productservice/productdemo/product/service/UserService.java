@@ -15,12 +15,17 @@ import java.util.List;
  * @CreateTime: 2019-02-14 15:30
  * @Description: ...
  */
-@FeignClient("USER-SERVICE")
+//@FeignClient("USER-SERVICE")
 public interface UserService {
 
-    @RequestMapping(value="/users",method = RequestMethod.GET)
+    /*@RequestMapping(value="/users",method = RequestMethod.GET)
     List<UserDto> findAll();
 
     @RequestMapping(value="/users/{id}",method = RequestMethod.GET)
     UserDto load(@PathVariable("id") Long id);
+    */
+
+    List<UserDto> findAll();
+
+    UserDto load(Long id);
 }

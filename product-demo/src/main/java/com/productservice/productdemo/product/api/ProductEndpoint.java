@@ -125,8 +125,8 @@ public class ProductEndpoint {
             ProductCommentDto dto = new ProductCommentDto(comment);
             dto.setProduct(productDto);
             //dto.setAuthor(this.loadUser(comment.getAuthorId()));
-            //dto.setAuthor(this.userService.load(comment.getAuthorId()));
-            dto.setAuthor(this.loadUserEx(comment.getAuthorId()));
+            dto.setAuthor(this.userService.load(comment.getAuthorId()));
+            //dto.setAuthor(this.loadUserEx(comment.getAuthorId()));
             return dto;
         }).collect(Collectors.toList());
     }
