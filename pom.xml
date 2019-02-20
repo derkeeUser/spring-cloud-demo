@@ -29,6 +29,8 @@
         <module>user-demo</module>
         <module>user-demo2</module>
         <module>product-demo</module>
+        <module>product-demo2</module>
+        <module>sc-turbine</module>
     </modules>
 
     <dependencyManagement>

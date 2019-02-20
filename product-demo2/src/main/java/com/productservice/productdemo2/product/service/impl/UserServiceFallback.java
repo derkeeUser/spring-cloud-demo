@@ -1,6 +1,6 @@
-package com.productservice.productdemo.product.service.impl;
+package com.productservice.productdemo2.product.service.impl;
 
-import com.productservice.productdemo.product.service.UserService;
+import com.productservice.productdemo2.product.service.UserService;
 import com.userservice.userdemo.user.dto.UserDto;
 import org.springframework.stereotype.Component;
 

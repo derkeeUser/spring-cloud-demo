@@ -11,15 +11,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.productservice.productdemo.product.api;
+package com.productservice.productdemo2.product.api;
 
 
-import com.productservice.productdemo.product.dto.ProductCommentDto;
-import com.productservice.productdemo.product.dto.ProductDto;
-import com.productservice.productdemo.product.entity.Product;
-import com.productservice.productdemo.product.entity.ProductComment;
-import com.productservice.productdemo.product.service.ProductService;
-import com.productservice.productdemo.product.service.UserService;
+import com.productservice.productdemo2.product.dto.ProductCommentDto;
+import com.productservice.productdemo2.product.dto.ProductDto;
+import com.productservice.productdemo2.product.entity.Product;
+import com.productservice.productdemo2.product.entity.ProductComment;
+import com.productservice.productdemo2.product.service.ProductService;
+import com.productservice.productdemo2.product.service.UserService;
 import com.userservice.userdemo.user.dto.UserDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -39,7 +39,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,6 +68,7 @@ public class ProductEndpoint {
     @Autowired
     @Qualifier(value = "lbcRestTemplate")
     private RestTemplate lbcRestTemplate;
+
 
     @Autowired
     /**

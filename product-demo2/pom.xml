@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>product-demo</artifactId>
+    <artifactId>product-demo2</artifactId>
     <packaging>jar</packaging>
-    <name>product-demo</name>
+    <name>product-demo2</name>
 
     <dependencies>
         <dependency>

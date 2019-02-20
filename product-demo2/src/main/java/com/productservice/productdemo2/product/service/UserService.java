@@ -1,6 +1,6 @@
-package com.productservice.productdemo.product.service;
+package com.productservice.productdemo2.product.service;
 
-import com.productservice.productdemo.product.service.impl.UserServiceFallback;
+import com.productservice.productdemo2.product.service.impl.UserServiceFallback;
 import com.userservice.userdemo.user.dto.UserDto;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
