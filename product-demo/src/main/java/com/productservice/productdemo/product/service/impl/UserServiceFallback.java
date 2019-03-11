@@ -15,9 +15,9 @@ import java.util.List;
  * @Description: Feign降级
  */
 @Component
-public class UserServiceFallback implements UserService {
+public class UserServiceFallback /*implements UserService*/ {
 
-    @Override
+    /*@Override
     public List<UserDto> findAll() {
         return this.findAllFallback();
     }
@@ -25,7 +25,7 @@ public class UserServiceFallback implements UserService {
     @Override
     public UserDto load(Long id) {
         return this.loadFallback(id);
-    }
+    }*/
 
     /**
      * 具体用户列表回退方法

@@ -16,7 +16,7 @@ import java.util.List;
  * @CreateTime: 2019-02-14 15:30
  * @Description: ...
  */
-@FeignClient(name="USER-SERVICE",fallback = UserServiceFallback.class)
+//@FeignClient(name="USER-SERVICE",fallback = UserServiceFallback.class)
 public interface UserService {
 
     /**
@@ -24,11 +24,11 @@ public interface UserService {
      * 需要打开类上面的@FeignClient注解，关闭该服务的UserServiceImpl类
      */
 
-    @RequestMapping(value="/users",method = RequestMethod.GET)
+   /* @RequestMapping(value="/users",method = RequestMethod.GET)
     List<UserDto> findAll();
 
     @RequestMapping(value="/users/{id}",method = RequestMethod.GET)
-    UserDto load(@PathVariable("id") Long id);
+    UserDto load(@PathVariable("id") Long id);*/
 
 
     /**
@@ -36,7 +36,7 @@ public interface UserService {
      * 需要关闭类上面的@FeignClient注解，解注该服务的UserServiceImpl类
      */
 
-    /*List<UserDto> findAll();
+    List<UserDto> findAll();
 
-    UserDto load(Long id);*/
+    UserDto load(Long id);
 }
