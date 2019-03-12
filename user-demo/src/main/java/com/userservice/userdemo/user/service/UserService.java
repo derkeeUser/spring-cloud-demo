@@ -48,7 +48,7 @@ public interface UserService {
      * @param userDto
      * @return
      */
-    User save(UserDto userDto);
+    UserDto save(UserDto userDto);
 
     /**
      * 删除指定的用户

@@ -58,6 +58,13 @@ public class UserDto implements Serializable {
         this.avatar = user.getAvatar();
     }
 
+    public UserDto(UserDto userDto) {
+        this.id = userDto.getId();
+        this.nickname = userDto.getNickname();
+        this.avatar = userDto.getAvatar();
+        this.userServicePort = userDto.getUserServicePort();
+    }
+
     public UserDto(User user, int userServicePort) {
         this.id = user.getId();
         this.nickname = user.getNickname();

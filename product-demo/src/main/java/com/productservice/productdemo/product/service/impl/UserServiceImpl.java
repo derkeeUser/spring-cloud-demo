@@ -66,11 +66,11 @@ public class UserServiceImpl implements UserService {
         //先从Redis中获取数据
         UserDto userDto = this.userRedisRepository.findOne(id);
         if (null != userDto) {
-            LOGGER.debug("已从Redis缓存中获取到用户：{}的信息",id);
+            LOGGER.info("已从Redis缓存中获取到用户：{}的信息",id);
             return userDto;
         }
         //如果Redis中不存在就从远程获取
-        LOGGER.debug("Redis缓存中不存在用户：{}的信息，尝试从远程进行加载", id);
+        LOGGER.info("Redis缓存中不存在用户：{}的信息，尝试从远程进行加载", id);
 
         //RestTemplate方式
         //userDto = this.restTemplate.getForEntity("http://USER-SERVICE/users/{id}", UserDto.class, id).getBody();

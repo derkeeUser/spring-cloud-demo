@@ -33,6 +33,7 @@
         <module>sc-turbine</module>
         <module>zuul-server</module>
         <module>config-server</module>
+        <module>zipkin-server</module>
     </modules>
 
     <dependencyManagement>
@@ -40,7 +41,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Edgware.SR5</version>
+                <version>Edgware.SR5</version><!--Dalston.SR4-->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

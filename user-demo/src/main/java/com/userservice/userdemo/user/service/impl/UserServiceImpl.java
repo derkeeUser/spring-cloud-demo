@@ -16,10 +16,13 @@ package com.userservice.userdemo.user.service.impl;
 
 import com.userservice.userdemo.user.dto.UserDto;
 import com.userservice.userdemo.user.entity.User;
+import com.userservice.userdemo.user.entity.UserMsg;
 import com.userservice.userdemo.user.repository.UserRepository;
+import com.userservice.userdemo.user.service.UserMsgSender;
 import com.userservice.userdemo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -43,6 +46,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     protected UserRepository userRepository;
 
+    @Autowired
+    protected UserMsgSender userMsgSender;
+
+    @Autowired
+    protected Tracer tracer;
+
     @Override
     public Page<User> getPage(Pageable pageable) {
         return this.userRepository.findAll(pageable);
@@ -55,20 +64,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User save(UserDto userDto) {
+    public UserDto save(UserDto userDto) {
         User user = this.userRepository.findOne(userDto.getId());
         if (null == user) {
             user = new User();
         }
         user.setNickname(userDto.getNickname());
         user.setAvatar(userDto.getAvatar());
-        return this.userRepository.save(user);
+        this.userRepository.save(user);
+        this.sendMsg(UserMsg.UP_UPDATE,user.getId());
+        return new UserDto(userDto);
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
         this.userRepository.delete(id);
+        this.sendMsg(UserMsg.UP_DELETE, id);
     }
 
     /**
@@ -97,5 +109,13 @@ public class UserServiceImpl implements UserService {
             return new UserDto(user, serverPort);
         }
         return null;
+    }
+
+    protected void sendMsg(String action, Long userId) {
+        this.userMsgSender.sendMsg(new UserMsg(action,userId,this.getTracerId()));
+    }
+
+    private String getTracerId() {
+        return this.tracer.getCurrentSpan().traceIdString();
     }
 }

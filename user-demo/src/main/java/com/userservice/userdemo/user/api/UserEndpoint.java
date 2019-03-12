@@ -92,8 +92,8 @@ public class UserEndpoint {
     })
     public UserDto update(@PathVariable Long id, @RequestBody UserDto userDto){
         userDto.setId(id);
-        User user = this.userService.save(userDto);
-        return (null != user) ? new UserDto(user) : null;
+        UserDto user = this.userService.save(userDto);
+        return (null != user) ? user : null;
     }
 
     /**
