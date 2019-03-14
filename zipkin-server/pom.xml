@@ -9,6 +9,7 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <artifactId>zipkin-server</artifactId>
+    <packaging>jar</packaging>
     <name>zipkin-server</name>
 
     <dependencies>
