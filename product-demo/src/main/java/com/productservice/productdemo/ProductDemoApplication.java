@@ -10,14 +10,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
+//import org.springframework.cloud.stream.annotation.EnableBinding;
+//import org.springframework.cloud.stream.annotation.StreamListener;
+//import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
-@EnableBinding(Sink.class)
+//@EnableBinding(Sink.class)
 @EnableHystrixDashboard
 @EnableCircuitBreaker
 @EnableDiscoveryClient
@@ -46,8 +46,8 @@ public class ProductDemoApplication {
         SpringApplication.run(ProductDemoApplication.class, args);
     }
 
-    @StreamListener(Sink.INPUT)
-    public void onUserMsgSink(UserMsg userMsg){
-        this.logger.info("receive user msg:{}",userMsg);
-    }
+    //@StreamListener(Sink.INPUT)
+    //public void onUserMsgSink(UserMsg userMsg){
+    //    this.logger.info("receive user msg:{}",userMsg);
+    //}
 }

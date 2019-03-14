@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/config")
 public class ConfigEndpoint {
-    //@Value("${foo}")
-    //private String foo;
+    @Value("${foo}")
+    private String foo;
 
     @RequestMapping("/foo")
     public String foo(){
-        String foo = ApplicationContextHolder.getApplicationContext()
-                        .getEnvironment().getProperty("foo");
+        //String foo = ApplicationContextHolder.getApplicationContext()
+        //                .getEnvironment().getProperty("foo");
         return "Hi," + foo + "!";
     }
 }

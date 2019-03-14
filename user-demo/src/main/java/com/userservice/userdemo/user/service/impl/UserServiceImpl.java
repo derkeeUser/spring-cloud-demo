@@ -18,7 +18,7 @@ import com.userservice.userdemo.user.dto.UserDto;
 import com.userservice.userdemo.user.entity.User;
 import com.userservice.userdemo.user.entity.UserMsg;
 import com.userservice.userdemo.user.repository.UserRepository;
-import com.userservice.userdemo.user.service.UserMsgSender;
+//import com.userservice.userdemo.user.service.UserMsgSender;
 import com.userservice.userdemo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     protected UserRepository userRepository;
 
-    @Autowired
-    protected UserMsgSender userMsgSender;
+    //@Autowired
+    //protected UserMsgSender userMsgSender;
 
     @Autowired
     protected Tracer tracer;
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         user.setNickname(userDto.getNickname());
         user.setAvatar(userDto.getAvatar());
         this.userRepository.save(user);
-        this.sendMsg(UserMsg.UP_UPDATE,user.getId());
+        //this.sendMsg(UserMsg.UP_UPDATE,user.getId());
         return new UserDto(userDto);
     }
 
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void delete(Long id) {
         this.userRepository.delete(id);
-        this.sendMsg(UserMsg.UP_DELETE, id);
+        //this.sendMsg(UserMsg.UP_DELETE, id);
     }
 
     /**
@@ -111,9 +111,9 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    protected void sendMsg(String action, Long userId) {
-        this.userMsgSender.sendMsg(new UserMsg(action,userId,this.getTracerId()));
-    }
+    //protected void sendMsg(String action, Long userId) {
+    //    this.userMsgSender.sendMsg(new UserMsg(action,userId,this.getTracerId()));
+    //}
 
     private String getTracerId() {
         return this.tracer.getCurrentSpan().traceIdString();

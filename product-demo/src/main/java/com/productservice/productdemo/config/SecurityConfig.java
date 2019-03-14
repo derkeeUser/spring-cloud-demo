@@ -1,9 +1,10 @@
 package com.productservice.productdemo.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -38,5 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("123456").roles("USER").and()
                 .withUser("superAdmin").password("admin")
                 .roles("USER", "ADMIN");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //需要将csrf禁用，否则会报不能跨域访问的错误
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/products/**")
+                .hasRole("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and().httpBasic();
     }
 }
