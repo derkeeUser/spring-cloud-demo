@@ -54,4 +54,15 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductComment> findAllByProduct(Long productId) {
         return this.productCommentRepository.findByProductIdOrderByCreated(productId);
     }
+
+    @Override
+    public boolean delete(Long productId) {
+        try {
+            this.productRepository.delete(productId);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

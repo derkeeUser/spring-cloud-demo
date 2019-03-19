@@ -49,4 +49,6 @@ public interface ProductService {
      * @return
      */
     List<ProductComment> findAllByProduct(Long productId);
+
+    boolean delete(Long productId);
 }

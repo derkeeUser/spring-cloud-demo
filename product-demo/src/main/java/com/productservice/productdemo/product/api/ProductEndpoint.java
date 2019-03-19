@@ -113,6 +113,21 @@ public class ProductEndpoint {
         return new ProductDto(product);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ApiOperation(value = "根据productId删除商品数据", notes = "根据productId删除商品数据", httpMethod = "DELETE", tags = "商品管理相关Api")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "商品的主键", dataType = "int", paramType = "path")
+    })
+    public boolean delete(@PathVariable Long id){
+        try {
+            this.productService.delete(id);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     @RequestMapping(value = "/{id}/comments", method = RequestMethod.GET)
     @ApiOperation(value = "获取商品的评论列表", notes = "获取商品的评论列表", httpMethod = "GET", tags = "商品管理相关Api")
     @ApiImplicitParams({

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,6 +35,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     @Qualifier(value = "restTemplate")
     private RestTemplate restTemplate;
+
+    /**
+     * OAuth2：可替换restTemplate
+     */
+    //@Autowired
+    //private OAuth2RestTemplate oAuth2RestTemplate;
 
     @Autowired
     protected UserRemoteClient userRemoteClient;

@@ -34,6 +34,7 @@
         <module>zuul-server</module>
         <module>config-server</module>
         <module>zipkin-server</module>
+        <module>oauth-server</module>
     </modules>
 
     <dependencyManagement>
